@@ -1,0 +1,20 @@
+﻿@model IEnumerable<WebASPNet8MVC.ViewModels.MenuLoaiVM>
+
+<div class="col-lg-12">
+    <div class="mb-3">
+        <h4>Categories</h4>
+        <ul class="list-unstyled fruite-categorie">
+            @foreach (var loai in Model)
+            {
+                <li>
+                    <div class="d-flex justify-content-between fruite-name">
+                        <a asp-controller="HangHoa" asp-action="Index" asp-route-loai="@loai.MaLoai">
+                            <i class="fas fa-apple-alt me-2"></i>@loai.TenLoai
+                        </a>
+                        <span>(@loai.SoLuong)</span>
+                    </div>
+                </li>
+            }
+        </ul>
+    </div>
+</div>
