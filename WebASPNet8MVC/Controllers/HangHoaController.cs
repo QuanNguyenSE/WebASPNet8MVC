@@ -30,5 +30,23 @@ namespace WebASPNet8MVC.Controllers
             });
             return View(res);
         }
+        public IActionResult Search(string? query)
+        {
+            var data = _context.HangHoas.AsQueryable();
+            if (query != null)
+            {
+                data = data.Where(p => p.TenHh.Contains(query));
+            }
+            var res = data.Select(p => new HangHoaVM
+            {
+                MaHh = p.MaHh,
+                TenHh = p.TenHh,
+                Hinh = p.Hinh ?? "",
+                DonGia = p.DonGia ?? 0,
+                MoTaDonVi = p.MoTaDonVi,
+                TenLoai = p.MaLoaiNavigation.TenLoai,
+            });
+            return View(res);
+        }
     }
 }
