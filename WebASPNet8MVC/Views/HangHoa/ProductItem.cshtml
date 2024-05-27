@@ -19,7 +19,7 @@
                 <p>@hangHoa.MoTaDonVi</p>
                 <div class="d-flex justify-content-between flex-lg-wrap">
                     <p class="text-dark fs-5 fw-bold mb-0">$@hangHoa.DonGia / kg</p>
-                    <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                    <a asp-controller="Cart" asp-action="AddToCart" asp-route-Id="@hangHoa.MaHh" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
                 </div>
             </div>
         </div>
