@@ -13,9 +13,9 @@ namespace WebASPNet8MVC.Controllers
         {
             _context = context;
         }
-        const string CART_KEY = "MYCART";
+
         public List<CartItem> Cart => HttpContext.Session.Get<List<CartItem>>
-            (CART_KEY) ?? new List<CartItem>();
+            (MySetting.CART_KEY) ?? new List<CartItem>();
         public IActionResult Index()
         {
             return View(Cart);
@@ -48,7 +48,7 @@ namespace WebASPNet8MVC.Controllers
             {
                 item.SoLuong += quantity;
             }
-            HttpContext.Session.Set(CART_KEY, giohang);
+            HttpContext.Session.Set(MySetting.CART_KEY, giohang);
             return RedirectToAction("Index");
         }
         public IActionResult RemoveCart(int? id)
@@ -68,7 +68,7 @@ namespace WebASPNet8MVC.Controllers
             }
             giohang.Remove(item);
 
-            HttpContext.Session.Set(CART_KEY, giohang);
+            HttpContext.Session.Set(MySetting.CART_KEY, giohang);
             return RedirectToAction("Index");
         }
     }
